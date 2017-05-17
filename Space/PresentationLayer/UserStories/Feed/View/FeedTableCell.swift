@@ -30,7 +30,8 @@ class FeedTableCell: BaseCell {
 
 				titleLabel?.text = item.title
         spaceImage.image = nil
-				spaceImage.kf.setImage(with: item.imageUrl)
+				
+				spaceImage.kf.setImage(with: item.imageUrl, options: [.transition(.fade(0.3))])
 				
 				contentView.setNeedsLayout()
 				contentView.layoutIfNeeded()
