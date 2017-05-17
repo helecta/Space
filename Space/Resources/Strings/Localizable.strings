@@ -1,0 +1,16 @@
+//MARK: Common
+
+"EmptyLabelText" = "Seems it's empty here:(";
+
+
+//MARK: Saving
+"SavedTitle" = "Done!";
+"ImageWasSaved" = "Image saved to your Photos";
+"OK" = "Ok";
+
+"ErrorInSaveTitle" = "Error";
+"ImageWasNotSave" = "We could not save the image, please check that you gave access to Photos in the settings.";
+
+//Errors
+"ServerProblem" = "Houston, we have a problem... with the server";
+"NoInternetConnection" = "Houston, we have a problem... with the internet";
