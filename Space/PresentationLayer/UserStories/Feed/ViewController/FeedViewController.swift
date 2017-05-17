@@ -13,24 +13,60 @@
 import UIKit
 import ReactiveCocoa
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, ViewControllerWithAnimateHeader {
 	
 	var viewModel = FeedViewModel()
 	
 	@IBOutlet fileprivate weak var spinner: UIActivityIndicatorView!
 	@IBOutlet fileprivate weak var tableView: UITableView!
 	@IBOutlet fileprivate weak var emptyView: EmptyView!
+	@IBOutlet fileprivate weak var titleLabel: UILabel!
+	@IBOutlet fileprivate weak var subTitleLabel: UILabel!
+	@IBOutlet fileprivate weak var headerView: UIView!
+	
+	@IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+	
+	var maxHeaderHeight: CGFloat = 0
+	var minHeaderHeight: CGFloat = 0
+	var previousScrollOffset: CGFloat = 0
+	var headerRation: CGFloat {
+		return 0.6
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		bindViewModel()
 	}
-  
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		maxHeaderHeight = headerRation * view.bounds.height
+		headerHeightConstraint.constant = maxHeaderHeight
+	}
+	
   override var prefersStatusBarHidden : Bool {
     return false
   }
 	
+	//MARK: ScrollViewDelegate
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		self.animateHeaderView(tableView)
+	}
+	
+	//MARK: - ViewControllerWithAnimateHeader
+	func updateHeader(_ currentHeaderHeight: CGFloat) {
+		if currentHeaderHeight < maxHeaderHeight/2 {
+			titleLabel.alpha = currentHeaderHeight / (maxHeaderHeight/2)
+			subTitleLabel.alpha = max(0,(currentHeaderHeight - maxHeaderHeight/4) / (maxHeaderHeight/2))
+		} else {
+			titleLabel.alpha = 1.0
+			subTitleLabel.alpha = 1.0
+		}
+	}
+	
+	//MARK: Private
 	fileprivate func bindViewModel() {
 		viewModel.dataState.producer.skipRepeats().startWithValues { [weak self] (state) -> () in
 			guard let viewModel = self?.viewModel else {
@@ -38,14 +74,26 @@ class FeedViewController: UIViewController {
 			}
 			self?.emptyView.labelText = viewModel.emptyLabelText
 			self?.emptyView.isHidden = viewModel.isEmptyViewHidden
+			
 			self?.spinner.visible(isHidden: viewModel.isSpinnerViewHidden, withAnimation: true)
-			self?.tableView.visible(isHidden: viewModel.isTableViewHidden,
-			                        withAnimation: viewModel.shouldAnimateTableViewHidden)
+			
+			let shouldAnimateTableViewHidden = viewModel.shouldAnimateTableViewHidden
+			self?.tableView.visible(isHidden: viewModel.isTableViewHidden, withAnimation: shouldAnimateTableViewHidden)
+			self?.headerView.visible(isHidden: viewModel.isTableViewHidden, withAnimation: shouldAnimateTableViewHidden)
+			
 			if viewModel.shouldReloadTable {
 				DispatchQueue.main.async {  [weak self] _ in
 					self?.tableView.reloadData()
+					self?.updateMinConstantIfNeeded()
 				}
 			}
+		}
+	}
+	
+	fileprivate func updateMinConstantIfNeeded() {
+		if tableView.contentSize.height <= view.bounds.height - minHeaderHeight {
+			let offsetForScroll: CGFloat = 10
+			minHeaderHeight = view.bounds.height - tableView.contentSize.height + offsetForScroll
 		}
 	}
 	

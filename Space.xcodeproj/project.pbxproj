@@ -58,6 +58,7 @@
 		CECF3D1F1ECAF4C300182702 /* PostServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF3D1E1ECAF4C300182702 /* PostServiceTests.swift */; };
 		CECF3D261ECB0CCE00182702 /* PostApiWrapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF3D251ECB0CCE00182702 /* PostApiWrapperMock.swift */; };
 		CECF3D281ECB475F00182702 /* FeedViewModel+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF3D271ECB475F00182702 /* FeedViewModel+Presentation.swift */; };
+		CECF3D2A1ECC588600182702 /* ViewControllerWithAnimateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF3D291ECC588600182702 /* ViewControllerWithAnimateHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		CECF3D1E1ECAF4C300182702 /* PostServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceTests.swift; sourceTree = "<group>"; };
 		CECF3D251ECB0CCE00182702 /* PostApiWrapperMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostApiWrapperMock.swift; sourceTree = "<group>"; };
 		CECF3D271ECB475F00182702 /* FeedViewModel+Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FeedViewModel+Presentation.swift"; sourceTree = "<group>"; };
+		CECF3D291ECC588600182702 /* ViewControllerWithAnimateHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithAnimateHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -505,6 +507,7 @@
 				CECF3CFD1EC74F2900182702 /* EmptyView.swift */,
 				CECF3CFF1EC74FCF00182702 /* EmptyView.xib */,
 				CECF3D1A1ECA011E00182702 /* UIView+HideShowAnimation.swift */,
+				CECF3D291ECC588600182702 /* ViewControllerWithAnimateHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				CECF3CF31EC6593100182702 /* FeedViewModel.swift in Sources */,
 				CECF3CAE1EC5EC1100182702 /* KeychainStorage.swift in Sources */,
 				CECF3D021EC75B9900182702 /* NibInitializable.swift in Sources */,
+				CECF3D2A1ECC588600182702 /* ViewControllerWithAnimateHeader.swift in Sources */,
 				CECF3CE21EC6112C00182702 /* PostMappable.swift in Sources */,
 				CECF3CC91EC5F23D00182702 /* String+Localization.swift in Sources */,
 				CECF3CFE1EC74F2900182702 /* EmptyView.swift in Sources */,
@@ -948,7 +952,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = XQHG6P6T6X;
 				INFOPLIST_FILE = "$(SRCROOT)/Space/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peekaboo.Space;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -964,7 +968,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = XQHG6P6T6X;
 				INFOPLIST_FILE = "$(SRCROOT)/Space/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peekaboo.Space;
 				PRODUCT_NAME = "$(TARGET_NAME)";
